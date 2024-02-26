@@ -1,0 +1,30 @@
+<div class="h-screen grid place-items-center">
+  <div class="bg-stone-900 p-6 rounded-lg flex flex-col items-center">
+    <h1 class="text-3xl pb-2">Login</h1>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field pb-4">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", class: "text-black rounded" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "text-black rounded" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field mt-2 flex items-center gap-1">
+          <%= f.check_box :remember_me, class: "rounded" %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions mt-4">
+        <%= f.submit "Log in", class: "w-full bg-primary text-black py-2 rounded-lg" %>
+      </div>
+  <% end %>
+  <div class="mt-4 flex flex-col items-center gap-2">
+    <%= render "devise/shared/links" %>
+  </div>
+  </div>
+</div>

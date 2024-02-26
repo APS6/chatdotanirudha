@@ -1,0 +1,21 @@
+<div class="h-screen grid place-items-center">
+  <div class="bg-stone-900 p-6 rounded-lg flex flex-col items-center">
+    <h1 class="text-3xl pb-2">Resend confirmation</h1>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="flex flex-col pb-4">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "text-black rounded mt-[2px] w-full" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Resend confirmation instructions", class: "w-full bg-primary text-black py-2 rounded-lg" %>
+        </div>
+    <% end %>
+      <div class="mt-4 flex flex-col items-center gap-2">
+        <%= render "devise/shared/links" %>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat.Anirudha</title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Chat with Anirudha throough this website. I am Anirudha Pratap Sah (APS) a fullstack web developer from India." />
+    <meta name="keywords" content="Chat Anirudha, Chat APS, Anirudha, APS, Anirudha Pratap Sah, Anirudha Sah, aps6">
+    <meta property="og:title" content="Chat.Anirudha | Anirudha Pratap Sah">
+    <meta property="og:description" content="Chat with Anirudha Pratap Sah">
+    <meta property="og:image" content="<%= image_url('openGraph.jpg') %>">
+    <meta property="og:url" content="<%= root_url %>">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Chat.Anirudha | Anirudha Pratap Sah">
+    <meta property="twitter:description" content="Chat with Anirudha Pratap Sah">
+    <meta property="twitter:image" content="<%= image_url('openGraph.jpg') %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-black text-white">
+    <%= render partial: "shared/flash" %>
+      <%= yield %>
+  </body>
+</html>

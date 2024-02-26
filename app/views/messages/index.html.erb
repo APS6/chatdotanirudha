@@ -1,0 +1,22 @@
+<main class="max-w-3xl mx-auto flex flex-col h-[100svh]">
+	<% if current_user.id != 1 %>
+		<%= render "shared/titlebar" %>
+	<% else %>
+		<%= render "kingbar" %>
+	<% end %>
+	<div class="flex flex-col justify-between h-[calc(100svh-65px)]">
+		<%= turbo_stream_from "messages_#{current_user.id * @chat_user_id}" %>
+		<div class="flex flex-col-reverse overflow-y-auto px-1">
+		    <%= turbo_frame_tag "messages", class: "flex flex-col-reverse gap-4" do %>
+		      	<%= render @messages %>
+			      <% if @pagy.next %>
+					    <%= turbo_frame_tag "messages", loading: :lazy, src: messages_path(@chat_user_id, @messages, page: @pagy.next), class: "flex flex-col-reverse gap-4" do %>
+					 		<span>Loading...</span>
+					    <% end %>
+			  		<% end %>
+			<% end %>
+		</div>
+		<%= render "form", message: @message %>
+	</div>
+	<div id="userId" data-id="<%= current_user.id %>"></div>
+</main>

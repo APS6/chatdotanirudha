@@ -1,0 +1,9 @@
+<!-- app/views/user_mailer/welcome_email.html.erb -->
+
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f3f4f6; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <p style="font-size: 18px; color: #333;">Welcome <%= @email %>!</p>
+  <p style="margin-top: 16px; color: #666;">You can confirm your account email through the link below:</p>
+  <p style="margin-top: 16px;">
+    <a href="<%= confirmation_url(@resource, confirmation_token: @token) %>" style="display: inline-block; padding: 10px 20px; background-color: #3490dc; color: #fff; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">Confirm my account</a>
+  </p>
+</div>
