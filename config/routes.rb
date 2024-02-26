@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   get "/king", to: "king_main#index"
 
   get '/(:user_id)', to: 'messages#index', as: "messages"
