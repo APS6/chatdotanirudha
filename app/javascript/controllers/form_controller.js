@@ -3,6 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "input", "submitButton" ]
+  connect () {
+    this.inputTarget.focus()
+  }
   reset() {
    this.element.reset()
    this.resize()

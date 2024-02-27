@@ -66,7 +66,7 @@ class MessagesController < ApplicationController
     			@chat_user = User.find_by(id: params[:user_id])
     			@chat_user_id = params[:user_id].to_i
     		else
-    			redirect_to king_path, notice: "here king"
+    			redirect_to king_path
     		end
     	end
     end

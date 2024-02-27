@@ -7,7 +7,7 @@
 	<%= turbo_stream_from "messages_#{current_user.id * @chat_user_id}" %>
 	<div class="flex flex-col justify-between h-[calc(100svh-65px)]">
 		<div class="flex flex-col-reverse overflow-y-auto px-1">
-		    <%= turbo_frame_tag "messages", class: "flex flex-col-reverse gap-4" do %>
+		    <%= turbo_frame_tag "messages", class: "flex flex-col-reverse gap-4 pt-1" do %>
 		      	<%= render @messages %>
 			      <% if @pagy.next %>
 					    <%= turbo_frame_tag "messages", loading: :lazy, src: messages_path(@chat_user_id, @messages, page: @pagy.next), class: "flex flex-col-reverse gap-4" do %>
