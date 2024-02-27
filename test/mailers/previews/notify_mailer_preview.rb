@@ -3,6 +3,7 @@ class NotifyMailerPreview < ActionMailer::Preview
 	def new_message
 		user = User.last
     	sender = User.first
-		NotifyMailer.new_message(user, sender)
+    	message = Message.last
+		NotifyMailer.new_message(message.body, user, sender)
 	end
 end

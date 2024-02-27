@@ -8,12 +8,20 @@ class User < ApplicationRecord
   has_many :received_messages, class_name: "Message", foreign_key: "receiver_id", dependent: :destroy
 
 
-  def set_messages_notified!(timestamp)
-    self.received_messages.each do |message|
-      if message.created_at < timestamp
-        message.update(notified: true)
-      end
-    end
+  def online!
+    update(online: true)
+    broadcast_presence_update
+  end
+
+  def offline!
+    update(online: false)
+    broadcast_presence_update
+  end
+
+  private
+
+  def broadcast_presence_update
+    ActionCable.server.broadcast("presence_channel_#{id}", { user_id: id, online: online })
   end
 
 end
