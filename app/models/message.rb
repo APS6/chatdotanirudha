@@ -13,6 +13,8 @@ class Message < ApplicationRecord
   private
 
   def set_edited 
-    self.edited = true
+    if body_changed? 
+      self.edited = true
+    end
   end
 end

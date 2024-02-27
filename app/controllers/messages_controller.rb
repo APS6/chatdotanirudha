@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 	include Pagy::Backend
 	before_action :authenticate_user!
 	before_action :set_chat_user, only: %i[index create]
-  before_action :set_message, only: %i[ edit update destroy ]
+  before_action :set_message, only: %i[ edit update destroy set_read ]
 
   def index
 		@pagy, @messages = pagy(Message.where(sender_id: current_user.id, receiver_id: @chat_user_id ).or(Message.where(receiver_id: current_user.id, sender_id: @chat_user_id)).order(id: :desc), items: 15)
@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
 		@message.receiver_id = @chat_user_id
 	    respond_to do |format|
 	      if @message.save
-	      	format.turbo_stream
+	      	format.turbo_stream 
 	      	format.html { redirect_to messages_path(@chat_user_id)}
 	        # format.json { render :index, status: :created, location: @messages }
 	      else
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
 	def update
 		respond_to do |format|
       if @message.sender_id == current_user.id && @message.update(message_params)
-      	format.turbo_stream
+      	format.turbo_stream()
         format.html { redirect_to messages_path }
         # format.json { render :index, status: :ok, location: @message }
       else
@@ -48,7 +48,18 @@ class MessagesController < ApplicationController
 		end
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to root_path }
+      format.html { redirect_to messages_path }
+      format.json { head :no_content }
+    end
+	end
+
+	def set_read
+		if @message.receiver_id == current_user.id
+			@message.update(read: true)
+		end
+		respond_to do |format|
+	    format.turbo_stream
+      format.html { redirect_to messages_path }
       format.json { head :no_content }
     end
 	end

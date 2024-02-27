@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/messages/:id/edit', to: 'messages#edit', as: 'edit_message'
   patch '/messages/:id', to: 'messages#update', as: "update_message"
   delete '/messages/:id', to: 'messages#destroy', as: "delete_message"
-
+  get '/messages/:id/setread', to: 'messages#set_read', as: "read_message"
   root to: 'messages#index'
 
 

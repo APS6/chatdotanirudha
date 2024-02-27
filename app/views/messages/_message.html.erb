@@ -1,5 +1,5 @@
 <% if message.sender_id != @chat_user_id %>
-	<%= turbo_frame_tag dom_id(message), data: {controller: "message", message_id_value: message.sender_id}, class: " flex flex-col items-end group/message" do %>
+	<%= turbo_frame_tag dom_id(message), data: {controller: "message", message_sender_value: message.sender_id, message_read_value: message.read, message_id_value: message.id}, class: " flex flex-col items-end group/message" do %>
 		<div data-message-target="innerDiv" class=" flex gap-2 items-center justify-end max-w-[75%]">
 			<div data-controller="popup" data-message-target="popup">
 				<div data-action="click->popup#show" class="text-neutral-300 relative block md:hidden group-hover/message:block cursor-pointer p-1">
@@ -22,7 +22,10 @@
 				<% if message.edited %><span class="text-[#71767b] text-sm">(edited)</span><% end %>
 			</div>
 		</div>
-		<span class="text-[12px] text-[#71767b]"><%= local_time_ago(message.created_at) %></span>
+		<div class="flex gap-1 items-center">
+			<span class="text-[12px] text-[#71767b]"><%= local_time_ago(message.created_at) %></span>
+			<%= render partial: "shared/svg/read", locals: { read: message.read}%>
+		</div>
 	<% end %>
 <% else %>
 	<%= turbo_frame_tag dom_id(message), class: "w-full flex flex-col" do %>
@@ -33,5 +36,7 @@
 			</div>
 		</div>
 		<span class="text-[12px] text-[#71767b]"><%= local_time_ago(message.created_at) %></span>
+		<% if !message.read %><%= turbo_frame_tag "read_#{message.id}", src: read_message_path(message.id) %>
+		<% end %>
 	<% end %>
 <% end %>
