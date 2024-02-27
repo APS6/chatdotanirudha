@@ -10,7 +10,7 @@ class Message < ApplicationRecord
 
   before_update :set_edited
 
-  after_create do 
+  after_create_commit do 
     if !self.receiver.online && (self.receiver.last_mailed.nil? || self.receiver.last_mailed < Time.now - 1.minute)
       NotifyMailer.new_message(self.body, self.receiver, self.sender).deliver_now
       self.receiver.update(last_mailed: Time.now)
