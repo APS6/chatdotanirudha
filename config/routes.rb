@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
   get "/king", to: "king_main#index"
 
@@ -7,8 +9,6 @@ Rails.application.routes.draw do
   get '/messages/:id/edit', to: 'messages#edit', as: 'edit_message'
   patch '/messages/:id', to: 'messages#update', as: "update_message"
   delete '/messages/:id', to: 'messages#destroy', as: "delete_message"
-
-  get "up" => "rails/health#show", as: :rails_health_check
 
   root to: 'messages#index'
 
