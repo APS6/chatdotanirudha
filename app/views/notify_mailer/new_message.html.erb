@@ -1,0 +1,8 @@
+<!-- app/views/user_mailer/welcome_email.html.erb -->
+
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f3f4f6; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <p style="font-size: 18px; color: #333;"><%= @sender.username %> sent you a message</p>
+  <p style="margin-top: 16px;">
+    <a href="<%= messages_url(@sender) %>" style="display: inline-block; padding: 10px 20px; background-color: #3490dc; color: #fff; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">View</a>
+  </p>
+</div>

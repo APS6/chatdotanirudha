@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<span class="text-[12px] text-[#71767b]"><%= local_time_ago(message.created_at) %></span>
-		<% if !message.read %><%= turbo_frame_tag "read_#{message.id}", src: read_message_path(message.id) %>
+		<% if !message.read %><%= turbo_frame_tag "read_#{message.id}", src: read_message_path(message.id), class: "hidden" %>
 		<% end %>
 	<% end %>
 <% end %>

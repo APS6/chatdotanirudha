@@ -10,6 +10,9 @@ class Message < ApplicationRecord
 
   before_update :set_edited
 
+  after_create do 
+    SendMailJob.set(wait: 1.minute).perform_later(self.id, self.receiver, self.sender)
+  end
   private
 
   def set_edited 

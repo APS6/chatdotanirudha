@@ -73,3 +73,5 @@ gem "tailwindcss-rails", "~> 2.3"
 gem "local_time", "~> 3.0"
 
 gem "pagy", "~> 7.0"
+
+gem "sidekiq", "~> 7.2"
