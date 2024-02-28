@@ -1,22 +1,20 @@
-<div class="flex flex-col">
-  <%= render "shared/titlebar" %>
-  <div class="px-4 mt-4">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="flex flex-col pb-4">
-          <%= f.label :username %>
-          <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "Username", class: "text-black rounded mt-[2px] w-full" %>
-        </div>
+<main class="max-w-3xl mx-auto flex flex-col items-center h-[100svh]">
+    <%= render "shared/titlebar" %>
+    <div class="px-4 mt-4 w-full max-w-xl">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="flex flex-col">
+            <%= f.label :username %>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username", placeholder: "Username", class: "text-black rounded mt-[2px] w-full" %>
+          </div>
+          <div class="field mt-2 flex items-center gap-1">
+            <%= f.check_box :receive_mail, class: "rounded p-2" %>
+            <%= f.label "Receive email notifications", for: :receive_mail %>
+          </div>
 
-        <div class="flex flex-col pb-4">
-          <%= f.label :current_password %>
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "text-black rounded mt-[2px] w-full" %>
-        </div>
-
-        <div class="actions mt-2">
-          <%= f.submit "Update", class: "w-full bg-primary text-black py-2 rounded-lg" %>
-        </div>
-      <% end %>
-  </div>
-
-</div>
+          <div class="actions mt-4">
+            <%= f.submit "Update", class: "px-4 bg-primary text-black py-2 rounded-lg" %>
+          </div>
+        <% end %>
+    </div>
+</main>
