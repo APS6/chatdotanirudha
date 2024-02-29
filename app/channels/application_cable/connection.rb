@@ -6,11 +6,11 @@ module ApplicationCable
     def connect
       self.current_user = find_verified_user
       if current_user
-        current_user.update(online: true) 
+        current_user.update(online: true, last_seen: Time.now) 
       end
 
     def disconnect
-      current_user.update(online: false) if current_user
+      current_user.update(online: false, last_seen: Time.now) if current_user
     end
 
     end
