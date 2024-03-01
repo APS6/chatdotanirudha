@@ -1,10 +1,7 @@
-
 <main class="max-w-3xl mx-auto flex flex-col h-[100svh]">
 	<%= render "shared/titlebar" %>
-	<div class="flex flex-col gap-2 px-2 pt-1">
 		<%= turbo_stream_from "users" %>
-		<%= turbo_frame_tag "users" do %>
+		<%= turbo_frame_tag "users", class: "flex flex-col gap-2 px-2 pt-1" do %>
 			<%= render partial: "king_main/user", collection: @users, locals: { user: :user, message: nil } %>
 		<% end %>
-	</div>
 </main>
