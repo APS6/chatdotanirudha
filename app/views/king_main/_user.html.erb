@@ -6,7 +6,7 @@
 					<h2 class="text-2xl"><%= user.username %></h2>
 					<%= render partial: "shared/status", locals: { status: user.online, user: user.id } %>
 				</div>
-				<span class="text-sm"><%= message || user.sent_messages[-1].body %></span>
+				<span class="text-sm"><%= ((user.sent_messages + user.received_messages).max_by({ |message| message.created_at})).body %></span>
 			</div>
 			<div class="text-black bg-primary rounded-full w-8 h-8 grid items-center text-center">
 				<%= user.sent_messages.where(read: false).count %>
