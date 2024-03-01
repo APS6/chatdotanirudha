@@ -1,4 +1,7 @@
 <div class="py-4 px-3 w-full border-b border-b-white flex justify-between items-center">
 	<%= link_to "<h3 class='text-2xl'>Chat<span class='text-primary'>.anirudha</span></h3>".html_safe, root_path %>
-	<span><%= @chat_user.username %></span>
+	<div class="flex items-center gap-2">
+		<span><%= @chat_user.username %></span>
+		<%= render partial: "shared/status", locals: { status: @chat_user.online, user: @chat_user.id } %>
+	</div>
 </div>

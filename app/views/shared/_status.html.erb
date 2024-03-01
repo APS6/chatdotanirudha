@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "status_#{user}" do %>
+	<%= turbo_stream_from "status_#{user}" %>
+	<% if status %>
+		<div class="bg-green-500 w-2 h-2 rounded-full"></div>
+	<% else %>
+		<div class="bg-red-500 w-2 h-2 rounded-full"></div>
+	<% end %>
+<% end %>
