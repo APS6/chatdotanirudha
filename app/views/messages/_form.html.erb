@@ -1,8 +1,8 @@
 
 <%= form_with(model: message, id: dom_id(message), url: post_messages_path(@chat_user_id), data: { controller: "form", action: "turbo:submit-end->form#reset"}) do |form| %>
     <div class=" flex gap-2 items-center  py-2 px-1 rounded">
-      <%= form.text_area :body, rows: 1, placeholder: "Message Anirudha", data: {action: "form#resize keydown.enter->form#submit", form_target: "input"}, class: "block rounded-full outline-none bg-stone-900 px-3 py-2 w-full text-white max-h-52 resize-none" %>
-      <button data-form-target="submitButton" type="submit" name="commit" class="rounded-full p-2 bg-primary text-stone-950 font-medium cursor-pointer">
+      <%= form.text_area :body, rows: 1, placeholder: "Message Anirudha", data: {action: "form#resize keydown.enter->form#submit", form_target: "input"}, class: "block rounded-full outline-none bg-stone-900 px-3 py-2 w-full text-white max-h-52 resize-none", tabindex: "69" %>
+      <button data-form-target="submitButton" type="submit" name="commit" class="rounded-full p-2 bg-primary text-stone-950 font-medium cursor-pointer" tabindex="69">
           <%= render "shared/svg/send" %>
     </div>
 <% end %>

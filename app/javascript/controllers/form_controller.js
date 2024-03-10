@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "input", "submitButton" ]
+  static targets = [ "input", "submitButton", "closeBtn" ]
   connect () {
    if (window.innerWidth > 768) {
      this.inputTarget.focus()
@@ -20,5 +20,10 @@ export default class extends Controller {
   submit(e){
     e.preventDefault()
     this.submitButtonTarget.click()
+  }
+  close() {
+    if (this.closeBtnTarget) {
+      this.closeBtnTarget.click()
+    }
   }
 }

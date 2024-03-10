@@ -12,6 +12,18 @@ export default class extends Controller {
       }
     }
   }
+  handleFocus() {
+    const messageDiv = this.element
+    this.element.addEventListener('keydown', (e) => {
+      const triggerRect = messageDiv.getBoundingClientRect();
+      if (e.key == "Enter") {
+        this.application.getControllerForElementAndIdentifier(this.popupTarget, 'popup').show({clientX: triggerRect.left + triggerRect.width - 28, clientY: triggerRect.top + 16})
+      }
+    })
+  }
+  hidePopup() {
+    this.application.getControllerForElementAndIdentifier(this.popupTarget, 'popup').hide()
+  }
     setClasses() {
       this.element.classList = "w-full flex flex-col"
       this.contentDivTarget.classList = "bg-stone-800 text-white p-4 rounded-3xl rounded-bl self-start max-w-[100%]"
