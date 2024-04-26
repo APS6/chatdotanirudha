@@ -1,12 +1,12 @@
 <%= turbo_frame_tag dom_id(user) do %>
 	<%= link_to messages_path(user), data: { turbo_frame: "_top"} do %>
 		<div class="w-full py-4 px-4 bg-stone-900 rounded flex items-center justify-between">
-			<div>
+			<div class="w-[90%]">
 				<div class="flex gap-2 items-center">
 					<h2 class="text-2xl"><%= user.username %></h2>
 					<%= render partial: "shared/status", locals: { status: user.online, user: user.id } %>
 				</div>
-				<span class="text-sm"><%= ((user.sent_messages + user.received_messages).max_by{ |message| message.created_at}).body %></span>
+				<span class="text-sm break-words"><%= ((user.sent_messages + user.received_messages).max_by{ |message| message.created_at}).body %></span>
 			</div>
 			<div class="text-black bg-primary rounded-full w-8 h-8 grid items-center text-center">
 				<%= user.sent_messages.where(read: false).count %>

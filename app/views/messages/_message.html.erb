@@ -17,8 +17,8 @@
 				</div>
 				 <div data-action="click->popup#hide" data-popup-target="overlay" class="fixed inset-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
 			</div>
-			<div data-message-target="contentDiv" class="bg-white text-black p-4 rounded-3xl rounded-br max-w-[100%]">
-				<%= simple_format message.body, class: "inline break-words whitespace-pre-wrap" %>
+			<div data-message-target="contentDiv" class="bg-white text-black px-4 pb-4 rounded-3xl rounded-br max-w-[100%]">
+				<%= sanitize simple_format message.body, class: "hide-br break-words whitespace-break-spaces mt-4" %>
 				<% if message.edited %><span class="text-[#71767b] text-sm">(edited)</span><% end %>
 			</div>
 		</div>
@@ -30,8 +30,8 @@
 <% else %>
 	<%= turbo_frame_tag dom_id(message), class: "w-full flex flex-col" do %>
 		<div class="self-start flex gap-2 items-center max-w-[75%]">
-			<div class=" bg-stone-800 text-white p-4 rounded-3xl rounded-bl self-start max-w-[100%]">
-				<%= simple_format message.body, class: "inline break-words whitespace-pre-wrap"  %>
+			<div class=" bg-stone-800 text-white px-4 pb-4 rounded-3xl rounded-bl self-start max-w-[100%]">
+				<%= sanitize simple_format message.body, class: "hide-br break-words whitespace-break-spaces mt-4" %>
 				<% if message.edited %><span class="text-[#71767b] text-sm">(edited)</span><% end %>
 			</div>
 		</div>

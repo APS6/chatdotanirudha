@@ -34,7 +34,7 @@ export default class extends Controller {
   }
     setClasses() {
       this.element.classList = "w-full flex flex-col"
-      this.contentDivTarget.classList = "bg-stone-800 text-white p-4 rounded-3xl rounded-bl self-start max-w-[100%]"
+      this.contentDivTarget.classList = "bg-stone-800 text-white px-4 pb-4 rounded-3xl rounded-bl self-start max-w-[100%]"
       this.innerDivTarget.classList = "self-start flex gap-2 items-center max-w-[75%]"
       this.popupTarget.classList = 'hidden'
       this.readTarget.remove()

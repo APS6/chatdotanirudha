@@ -7,6 +7,7 @@ export default class extends Controller {
    if (window.innerWidth > 768) {
      this.inputTarget.focus()
    }
+   this.resize()
   }
   reset() {
    this.element.reset()
