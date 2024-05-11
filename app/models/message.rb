@@ -13,7 +13,7 @@ class Message < ApplicationRecord
 
   after_create_commit do 
     receiver = self.receiver
-    if !receiver.online && (receiver.last_mailed.nil? || receiver.last_mailed < Time.now - 1.minute) && receiver.receive_mail && receiver.last_seen < Time.now - 1.minute
+    if !receiver.online && (receiver.last_mailed.nil? || receiver.last_mailed < Time.now - 1.minute) && receiver.receive_mail
       NotifyMailer.new_message(self.body, receiver, self.sender).deliver_now
       receiver.update(last_mailed: Time.now)
     end
