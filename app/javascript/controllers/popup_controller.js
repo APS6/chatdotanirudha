@@ -11,6 +11,14 @@ export default class extends Controller {
     content.style.display = 'flex';
     overlay.style.display = 'block'
   }
+  showactions(event) {
+    const content = this.contentTarget
+    const overlay = this.overlayTarget
+    this.firstBtnTarget.focus()
+    content.style.left = event.clientX + 'px';
+    content.style.top = event.clientY + 'px';
+    content.style.display = 'flex';
+  }
   
   hide() {
      this.contentTarget.style.display = 'none';
