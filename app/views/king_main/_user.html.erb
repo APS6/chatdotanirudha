@@ -4,9 +4,10 @@
 			<div class="w-[90%]">
 				<div class="flex gap-2 items-center">
 					<h2 class="text-2xl"><%= user.username %></h2>
+					<span class="text-sm">last seen <%= local_time_ago(user.last_seen) %></span>
 					<%= render partial: "shared/status", locals: { status: user.online, user: user.id } %>
 				</div>
-				<span class="text-sm break-words"><%= ((user.sent_messages + user.received_messages).max_by{ |message| message.created_at}).body %></span>
+				<span class="text-sm break-words"><%= ((user.sent_messages + user.received_messages).max_by{ |message| message.created_at})&.body %></span>
 			</div>
 			<div class="text-black bg-primary rounded-full w-8 h-8 grid items-center text-center">
 				<%= user.sent_messages.where(read: false).count %>

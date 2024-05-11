@@ -73,3 +73,9 @@ gem "tailwindcss-rails", "~> 2.3"
 gem "local_time", "~> 3.0"
 
 gem "pagy", "~> 7.0"
+
+gem 'omniauth'
+
+gem 'omniauth-google-oauth2'
+
+gem 'omniauth-rails_csrf_protection'
