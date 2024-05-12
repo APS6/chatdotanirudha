@@ -1,10 +1,10 @@
 <%= turbo_frame_tag dom_id(message), data: {controller: "message", action: "focus->message#handleFocus keydown.esc->message#hidePopup"}, class: " flex flex-col items-end group/message", tabindex: "0" do %>
-	<div data-message-target="innerDiv" class=" flex gap-2 items-center justify-end max-w-[75%]">
+	<div data-message-target="innerDiv" class=" flex gap-2 items-center justify-end w-full">
 		<div data-controller="popup" data-message-target="popup" data-action="keydown.esc->popup#hide">
 			<div data-popup-target="target" data-action="click->popup#show" class="text-neutral-300 relative block md:hidden group-hover/message:block group-focus/message:block group-focus/message:border group-focus/message:border-white rounded-full  cursor-pointer p-1">
 				<%= render "shared/svg/threedots" %>
 			</div>
-			<div data-popup-target="content" class="min-w-[8rem] p-1 flex-col gap-[2px] z-50 hidden absolute bg-stone-900 rounded -ml-16">
+			<div data-popup-target="content" class="min-w-[8rem] p-1 flex-col gap-[2px] z-50 hidden absolute bg-stone-900 rounded -ml-16 max-w-[75%]">
 				<%= link_to edit_message_path(message), data: { popup_target: "firstBtn"}, class: "p-1 rounded hover:bg-[#4d748d] focus:bg-[#4d748d] flex items-center gap-2" do %>
 					<%= render "shared/svg/edit" %>
 					<span>Edit</span>
