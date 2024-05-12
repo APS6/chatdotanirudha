@@ -4,7 +4,8 @@
 	<% else %>
 		<%= render "kingbar" %>
 	<% end %>
-	<%= turbo_stream_from "messages_#{current_user.id * @chat_user_id}" %>
+	<%= turbo_stream_from ["sent_messages", current_user.id, @chat_user_id] %>
+	<%= turbo_stream_from ["received_messages", current_user.id, @chat_user_id] %>
 	<div class="flex flex-col justify-between h-[calc(100svh-65px)]">
 		<div class="flex flex-col-reverse overflow-y-auto px-1">
 		    <%= turbo_frame_tag "messages", class: "flex flex-col-reverse gap-4 pt-1" do %>

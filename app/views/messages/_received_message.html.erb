@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(message), class: "w-full flex flex-col" do %>
+	<div class="self-start flex gap-2 items-center max-w-[75%]">
+		<div class=" bg-stone-800 text-white px-4 pb-4 rounded-3xl rounded-bl self-start max-w-[100%]">
+			<%= sanitize simple_format message.body, class: "hide-br break-words whitespace-break-spaces mt-4" %>
+			<% if message.edited %><span class="text-[#71767b] text-sm">(edited)</span><% end %>
+		</div>
+	</div>
+	<span class="text-[12px] text-[#71767b]"><%= local_time_ago(message.created_at) %></span>
+	<% if !message.read %>
+		<%= turbo_frame_tag "read_#{message.id}", src: read_message_path(message.id), class: "hidden" %>
+	<% end %>
+<% end %>
