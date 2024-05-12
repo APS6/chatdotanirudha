@@ -4,7 +4,7 @@
 			<div data-popup-target="target" data-action="click->popup#show" class="text-neutral-300 relative block md:hidden group-hover/message:block group-focus/message:block group-focus/message:border group-focus/message:border-white rounded-full  cursor-pointer p-1">
 				<%= render "shared/svg/threedots" %>
 			</div>
-			<div data-popup-target="content" class="min-w-[8rem] p-1 flex-col gap-[2px] z-50 hidden absolute bg-stone-900 rounded -ml-16 max-w-[75%]">
+			<div data-popup-target="content" class="min-w-[8rem] p-1 flex-col gap-[2px] z-50 hidden absolute bg-stone-900 rounded -ml-16">
 				<%= link_to edit_message_path(message), data: { popup_target: "firstBtn"}, class: "p-1 rounded hover:bg-[#4d748d] focus:bg-[#4d748d] flex items-center gap-2" do %>
 					<%= render "shared/svg/edit" %>
 					<span>Edit</span>
@@ -16,7 +16,7 @@
 			</div>
 			 <div data-action="click->popup#hide" data-popup-target="overlay" class="fixed inset-0 w-full h-full bg-black opacity-50 z-40 hidden"></div>
 		</div>
-		<div data-message-target="contentDiv" class="bg-white text-black px-4 pb-4 rounded-3xl rounded-br max-w-[100%]">
+		<div data-message-target="contentDiv" class="bg-white text-black px-4 pb-4 rounded-3xl rounded-br max-w-[75%]">
 			<%= sanitize simple_format message.body, class: "hide-br break-words whitespace-break-spaces mt-4" %>
 			<% if message.edited %><span class="text-[#71767b] text-sm">(edited)</span><% end %>
 		</div>
