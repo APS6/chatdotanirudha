@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer components {
   .hide-br > br {
     @apply hidden;
   }
 }
-
+.h-screen {
+  height: 100vh;
+  height: 100svh;
+}
