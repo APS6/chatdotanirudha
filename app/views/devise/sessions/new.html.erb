@@ -14,7 +14,7 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'w-full flex flex-col items-center' }) do |f| %>
       <div class="field pb-4 w-full ">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", class: "text-black rounded mt-1 w-full" %>
+        <%= f.email_field :email, autocomplete: "email", placeholder: "Email address", class: "text-black rounded mt-1 w-full" %>
       </div>
 
       <div class="field w-full ">
