@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(message), data: {controller: "message", action: "focus->message#handleFocus keydown.esc->message#hidePopup"}, class: " flex flex-col items-end group/message", tabindex: "0" do %>
 	<div data-message-target="innerDiv" class=" flex gap-2 items-center justify-end w-full">
 		<div data-controller="popup" data-message-target="popup" data-action="keydown.esc->popup#hide">
-			<div data-popup-target="target" data-action="click->popup#show" class="text-neutral-300 relative block md:hidden group-hover/message:block group-focus/message:block group-focus/message:border group-focus/message:border-white rounded-full  cursor-pointer p-1">
+			<div data-popup-target="target" data-action="click->popup#show" class="text-neutral-300 relative block md:hidden md:group-hover/message:block md:group-focus/message:block md:group-focus/message:border md:group-focus/message:border-white rounded-full  cursor-pointer p-1">
 				<%= render "shared/svg/threedots" %>
 			</div>
 			<div data-popup-target="content" class="min-w-[8rem] p-1 flex-col gap-[2px] z-50 hidden absolute bg-stone-900 rounded -ml-16">
