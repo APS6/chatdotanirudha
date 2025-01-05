@@ -73,13 +73,13 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'chat.anirudha.pro', protocol: "https" }
+  config.action_mailer.default_url_options = { host: 'chat.anirudhasah.com', protocol: "https" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:         'smtp.gmail.com',
     port:            587,
-    domain:          'chat.anirudha.pro',
+    domain:          'chat.anirudhasah.com',
     user_name:       Rails.application.credentials.dig(:google_smtp, :email),
     password:        Rails.application.credentials.dig(:google_smtp, :password),
     authentication:  'plain',
